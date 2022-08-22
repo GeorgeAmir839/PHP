@@ -1,0 +1,131 @@
+-- create database
+create database iti_aswan_2022;
+show databases;
+create database iti_test;
+use iti_aswan_2021;
+create table employee
+(name char, salary int, id int auto_increment, primary key(id));
+show tables;
+desc employee;
+select database();
+show tables;
+
+
+create database newname;
+use newname;
+show tables;
+select database();
+
+use iti_aswan_2021;
+
+
+create table movies 
+(catgory_id int, title text, director text,
+ id int primary key auto_increment, year int);
+
+insert into movies values (12, "test movie", "ahmed", 1 , 2010);
+
+select * from movies;
+
+insert into movies (catgory_id, title , year) values (15, "sec title", 2015);
+
+
+
+
+show columns from movies;
+
+show tables;
+desc country_lang;
+insert into country_lang values("021", "arabic", 2.3,"true" );
+select * from country_lang;
+
+insert into country_lang (country_code, language, percent)
+ values ("251", "english", 5.4);
+
+desc country_lang;
+
+select language,percent from country_lang;
+select * from country_lang;
+
+update country_lang set isOffecial = "true" where country_code = 251;
+
+
+set SQL_SAFE_UPDATEs = 0;
+
+
+update country_lang set percent = 10.5 where country_code = 021;
+
+update country_lang set isOffecial = 'false'
+, language= "french" where country_code = 021;
+
+
+select * from country_lang;
+
+update country_lang set language = "arabic", 
+percent = 1.241 where country_code = 021;
+
+desc country_lang;
+insert into country_lang values (127, 'new lang', 22.5, "true");
+
+delete from country_lang where language = "arabic" and country_code = "123";
+
+select * from country_lang where country_code = 124;
+select language from country_lang;
+
+select * from country_lang;
+
+select * from country_lang where percent <> 20.5; -- not equal
+
+
+select * from country_lang where percent = 22.5 and language = "arabic";
+select * from country_lang where percent NOT IN (20.5,2.5);
+
+
+select * from country_lang where percent between 20 and 21 ;
+
+select  language from country_lang;
+
+select * from country_lang where language = "english";
+
+select * from country_lang where percent in (1.5, 20.5,2.5);
+
+
+select * from country_lang where language like '%'; 
+select *, percent/15 from country_lang ;
+
+select * from country_lang order by country_code desc ;
+
+select avg(percent) from country_lang;
+
+show tables;
+desc employee;
+insert into employee (name, salary) values ("c", 3000);
+
+select * from employee;
+
+select name from employee union select country_code from country_lang;
+
+ENUM
+select * from country_lang where percent in (select salary from employee);
+-- select * from country_lang where percent in (1000, 2000, 3000)
+select salary from employee;
+insert into country_lang (country_code, language, percent)
+ values (123,"test" ,1000);
+ select * from employee;
+ drop table employee; -- delete all data and table 
+ truncate table employee;
+ 
+ alter table employee add column salary int;
+ 
+ 
+ create table employee (id int, name text, phone text );
+ insert into employee values(2, "test2", "223222");
+ 
+ drop database iti_aswan;
+ 
+ 
+ select * from country_lang;
+ 
+ alter table country_lang drop column isOffecial ;
+ delete from country_lang where country_code = 125;
+ replace into country_lang set percent= country_code;
